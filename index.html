@@ -27,4 +27,17 @@
             <input type="button" value="search" onclick="searchByAnime()"></input>
         </p>
     </body>
+
+    <script>
+        document.getElementById("seiyuu_input").addEventListener("keyup", ({key}) => {
+            if (key === "Enter") {
+                searchBySeiyuu();
+            }
+        });
+        document.getElementById("anime_input").addEventListener("keyup", ({key}) => {
+            if (key === "Enter") {
+                searchByAnime();
+            }
+        });
+    </script>
 </html>
