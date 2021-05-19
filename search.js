@@ -57,7 +57,7 @@ function handleSeiyuuResponse(response) {
     let seiyuuIdElem = document.getElementById("seiyuu_id");
     
     seiyuuImgElem.src = responseObj.image_url;
-    seiyuuNameElem.innerHTML = `${responseObj.family_name}, ${responseObj.given_name} (${responseObj.name})`;
+    seiyuuNameElem.innerHTML = `${responseObj.family_name} ${responseObj.given_name} (${responseObj.name})`;
     seiyuuIdElem.innerHTML = `<a href="${responseObj.url}">${responseObj.mal_id}</a>`;
 
     seiyuuRoleList = responseObj.voice_acting_roles;
