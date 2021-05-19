@@ -1,6 +1,5 @@
-// some cache'll be useful
-//Have a nicer display for if there is no role
-
+//return focus back to textfield when done.
+//handle 404.
 // u shld cache the user's anime list so dunnid to keep fetching. but dun cache for too long cuz user might update list halfway.
 // rmb to pbulish to github pages.
 //allow name search
@@ -126,6 +125,12 @@ function tryShowResults() {
         }
     )
 
-    rolesTable.innerHTML = rolesInner;
+    if (rolesInner == "") {
+        document.getElementById("empty_search_text").hidden = false;
+    } else {
+        document.getElementById("empty_search_text").hidden = true;
+        rolesTable.innerHTML = rolesInner;
+    }
+
     endSearch();
 }
