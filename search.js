@@ -1,11 +1,11 @@
 // some cache'll be useful
 //Have a nicer display for if there is no role
 
-// link the table texts to the mal entries for chars n anime
 // u shld cache the user's anime list so dunnid to keep fetching. but dun cache for too long cuz user might update list halfway.
 // rmb to pbulish to github pages.
 // controls to indicate what's been fetched
 // disable controls after u enter or click search until the results r in.
+//allow name search
 
 let animeList = null;
 let seiyuuRoleList = null;
@@ -58,7 +58,7 @@ function handleSeiyuuResponse(response) {
     
     seiyuuImgElem.src = responseObj.image_url;
     seiyuuNameElem.innerHTML = responseObj.name;
-    seiyuuIdElem.innerHTML = String(responseObj.mal_id);
+    seiyuuIdElem.innerHTML = `<a href="${responseObj.url}">${responseObj.mal_id}</a>`;
 
     seiyuuRoleList = responseObj.voice_acting_roles;
     tryShowResults();
@@ -106,9 +106,9 @@ function tryShowResults() {
             if (animeSet.has(role.anime.mal_id)) {
                 rolesInner += "<tr>";
                 rolesInner += `<td>${role.role}</td>`;
-                rolesInner += `<td>${role.anime.name}</td>`;
+                rolesInner += `<td><a href="${role.anime.url}">${role.anime.name}</a></td>`;
                 rolesInner += `<td><img src="${role.anime.image_url}"></img></td>`;
-                rolesInner += `<td>${role.character.name}</td>`;
+                rolesInner += `<td><a href="${role.character.url}">${role.character.name}</a></td>`;
                 rolesInner += `<td><img src="${role.character.image_url}"></img></td>`;
                 rolesInner += "</tr>";
             }
