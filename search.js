@@ -1,7 +1,36 @@
 // some cache'll be useful
+//Have a nicer display for if there is no role
 
 function isId(s) {
     return /^\s*[1-9][0-9]*\s*$/.test(s);
+}
+
+function getUserAnimeList() {
+    let username = document.getElementById("username_input").value;
+    getUserAnimeListPage(username, 1, []);
+}
+
+function getUserAnimeListPage(username, page, listSoFar) {
+    getPath = `https://api.jikan.moe/v3/user/${username.trim()}/animelist/completed/${String(page)}`
+
+    let rv = null;
+
+    let xhttpState = 0;
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = () => {
+        xhttpState++;
+        if (xhttpState == 4) {
+            let curPage = JSON.parse(xhttp.response).anime;
+
+            if (curPage.length) {
+                getUserAnimeListPage(username, page+1, listSoFar.concat(curPage));
+            } else {
+                console.log(listSoFar.length);
+            }
+        }
+    };
+    xhttp.open("GET", getPath);
+    xhttp.send();
 }
 
 function searchBySeiyuu() {
