@@ -52,6 +52,7 @@ function endSearch() {
     searching = false;
     document.getElementById("seiyuu_search_button").disabled = false;
     document.getElementById("seiyuu_input").disabled = false;
+    document.getElementById("seiyuu_input").focus();
 }
 
 function handleSeiyuuResponse(response) {
