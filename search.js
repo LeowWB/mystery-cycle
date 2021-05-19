@@ -129,12 +129,7 @@ function tryShowResults() {
         }
     )
 
-    if (rolesInner == "") {
-        document.getElementById("empty_search_text").hidden = false;
-    } else {
-        document.getElementById("empty_search_text").hidden = true;
-        rolesTable.innerHTML = rolesInner;
-    }
-
+    rolesTable.innerHTML = rolesInner;
+    document.getElementById("empty_search_text").hidden = (rolesInner != "");
     endSearch();
 }
