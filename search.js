@@ -30,14 +30,28 @@ function searchBySeiyuu() {
 
 function showResults(response) {
     let responseObj = JSON.parse(response);
-    alert(response);
 
-    seiyuuImgElem = document.getElementById("seiyuu_img");
-    seiyuuNameElem = document.getElementById("seiyuu_name");
-    seiyuuIdElem = document.getElementById("seiyuu_id");
+    let seiyuuImgElem = document.getElementById("seiyuu_img");
+    let seiyuuNameElem = document.getElementById("seiyuu_name");
+    let seiyuuIdElem = document.getElementById("seiyuu_id");
+    let rolesTable = document.getElementById("roles_table");
     
     seiyuuImgElem.src = responseObj.image_url;
     seiyuuNameElem.innerHTML = responseObj.name;
     seiyuuIdElem.innerHTML = String(responseObj.mal_id);
 
+    let rolesInner = "";
+    responseObj.voice_acting_roles.forEach(
+        (role) => {
+            rolesInner += "<tr>"
+            rolesInner += `<td>${role.role}</td>`
+            rolesInner += `<td>${role.anime.name}</td>`
+            rolesInner += `<td><img src="${role.anime.image_url}"></img></td>`
+            rolesInner += `<td>${role.character.name}</td>`
+            rolesInner += `<td><img src="${role.character.image_url}"></img></td>`
+            rolesInner += "</tr>"
+        }
+    )
+
+    rolesTable.innerHTML = rolesInner;
 }
