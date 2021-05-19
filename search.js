@@ -3,10 +3,10 @@
 
 // u shld cache the user's anime list so dunnid to keep fetching. but dun cache for too long cuz user might update list halfway.
 // rmb to pbulish to github pages.
-// controls to indicate what's been fetched
-// disable controls after u enter or click search until the results r in.
 //allow name search
+// add the get ids functionality
 
+let searching = false;
 let animeList = null;
 let seiyuuRoleList = null;
 
@@ -42,11 +42,18 @@ function getUserAnimeListPage(username, page, listSoFar) {
 }
 
 function beginSearch() {
+    searching = true;
+    document.getElementById("seiyuu_search_button").disabled = true;
+    document.getElementById("seiyuu_input").disabled = true;
+
     seiyuuRoleList = null;
     animeList = null;
 }
 
 function endSearch() {
+    searching = false;
+    document.getElementById("seiyuu_search_button").disabled = false;
+    document.getElementById("seiyuu_input").disabled = false;
 }
 
 function handleSeiyuuResponse(response) {
@@ -65,6 +72,10 @@ function handleSeiyuuResponse(response) {
 }
 
 function searchBySeiyuu() {
+    if (searching) {
+        return;
+    }
+
     beginSearch();
     
     let seiyuuInputValue = document.getElementById("seiyuu_input").value;
