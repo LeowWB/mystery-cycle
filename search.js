@@ -56,8 +56,16 @@ function handleSeiyuuResponse(response) {
     let seiyuuNameElem = document.getElementById("seiyuu_name");
     let seiyuuIdElem = document.getElementById("seiyuu_id");
     
+    let seiyuuNameText = "";
+
+    if (responseObj.family_name && responseObj.given_name) {
+        seiyuuNameText = `${responseObj.family_name} ${responseObj.given_name} (${responseObj.name})`;
+    } else {
+        seiyuuNameText = responseObj.name;
+    }
+
     seiyuuImgElem.src = responseObj.image_url;
-    seiyuuNameElem.innerHTML = `${responseObj.family_name} ${responseObj.given_name} (${responseObj.name})`;
+    seiyuuNameElem.innerHTML = seiyuuNameText;
     seiyuuIdElem.innerHTML = `<a href="${responseObj.url}">${responseObj.mal_id}</a>`;
 
     seiyuuRoleList = responseObj.voice_acting_roles;
