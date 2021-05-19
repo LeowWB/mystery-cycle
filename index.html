@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Mystery Cycle</title>
+        <script src="search.js"></script>
     </head>
     <body>
         <h1>Mystery Cycle</h1>
@@ -13,18 +14,17 @@
         </p>
         <p>
             username
-            <input type="text" value="Bonkers4Honkers"></input>
+            <input type="text" value="Bonkers4Honkers" id="username_input"></input>
         </p>
         <p>
             seiyuu
-            <input type="text"></input>
-            <input type="button" value="search"></input>
+            <input type="text" id="seiyuu_input"></input>
+            <input type="button" value="search" onclick="searchBySeiyuu()"></input>
         </p>
         <p>
             anime
-            <input type="text"></input>
-            <input type="button" value="search"></input>
+            <input type="text" id="anime_input"></input>
+            <input type="button" value="search" onclick="searchByAnime()"></input>
         </p>
     </body>
-
 </html>
