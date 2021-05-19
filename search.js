@@ -1,5 +1,4 @@
 //return focus back to textfield when done.
-//handle 404.
 // u shld cache the user's anime list so dunnid to keep fetching. but dun cache for too long cuz user might update list halfway.
 // rmb to pbulish to github pages.
 //allow name search
@@ -84,7 +83,12 @@ function searchBySeiyuu() {
     xhttp.onreadystatechange = () => {
         xhttpState++;
         if (xhttpState == 4) {
-            handleSeiyuuResponse(xhttp.response);
+            if (xhttp.status == 200 || xhttp.status == 0) {
+                handleSeiyuuResponse(xhttp.response);
+            } else {
+                alert(xhttp.status);
+                endSearch();
+            }
         }
     };
 
