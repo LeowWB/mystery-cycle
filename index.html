@@ -7,7 +7,7 @@
     <body>
         <h1>Mystery Cycle</h1>
         <h4>
-            you can key in either a name or an id into a textbox. if you key in a name, we will assume the top search result is the correct one.
+            you can key in either a name or an id into the seiyuu textbox. if you key in a name, we will assume the top search result is the correct one.
         </h4>
         <p>
             <a href=".">click here to find ids</a>
@@ -21,22 +21,12 @@
             <input type="text" id="seiyuu_input"></input>
             <input type="button" value="search" onclick="searchBySeiyuu()"></input>
         </p>
-        <p>
-            anime
-            <input type="text" id="anime_input"></input>
-            <input type="button" value="search" onclick="searchByAnime()"></input>
-        </p>
     </body>
 
     <script>
         document.getElementById("seiyuu_input").addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
                 searchBySeiyuu();
-            }
-        });
-        document.getElementById("anime_input").addEventListener("keyup", ({key}) => {
-            if (key === "Enter") {
-                searchByAnime();
             }
         });
     </script>
