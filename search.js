@@ -1,9 +1,3 @@
-//return focus back to textfield when done.
-// u shld cache the user's anime list so dunnid to keep fetching. but dun cache for too long cuz user might update list halfway.
-// rmb to pbulish to github pages.
-//allow name search
-// add the get ids functionality
-
 let searching = false;
 let animeList = null;
 let seiyuuRoleList = null;
@@ -75,9 +69,18 @@ function searchBySeiyuu() {
         return;
     }
 
+    let seiyuuInputValue = document.getElementById("seiyuu_input").value;
+    let getPath = "";
+
+    if (isId(seiyuuInputValue)) {
+        getPath = "https://api.jikan.moe/v3/person/" + seiyuuInputValue.trim();
+    } else {
+        alert("please enter a numeric id");
+        return;
+    }
+
     beginSearch();
     
-    let seiyuuInputValue = document.getElementById("seiyuu_input").value;
     let xhttpState = 0;
 
     let xhttp = new XMLHttpRequest();
@@ -92,14 +95,6 @@ function searchBySeiyuu() {
             }
         }
     };
-
-    let getPath = "";
-
-    if (isId(seiyuuInputValue)) {
-        getPath = "https://api.jikan.moe/v3/person/" + seiyuuInputValue.trim();
-    } else {
-        return;
-    }
 
     xhttp.open("GET", getPath);
     xhttp.send();
